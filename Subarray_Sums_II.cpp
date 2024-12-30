@@ -15,7 +15,7 @@ void asikM(){
     ll n,t;
     cin >>n>>t;
     ll c=0,s=0;
-    unordered_map<ll,ll>mp;
+    map<ll,ll>mp;
     mp[0]=1;
     forni{
         ll x;
