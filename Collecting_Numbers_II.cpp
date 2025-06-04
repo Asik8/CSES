@@ -24,19 +24,28 @@ using namespace std;
 void asikM(){
     ll n,m;
     cin>>n>>m;
-    vector <ll> v(n),in(n+1);
-    for(auto &x:v) cin>>x;
-    forni in[v[i]]=i;
+    vector <ll> v(n+1),in(n+1);
+    for(int i=1;i<=n;i++){
+        cin>>v[i];
+        in[v[i]]=i;
+    }
+    ll c=1;
+    for(int i=1;i<n;i++) c+=(in[i]>in[i+1]);
+    set<pi>s;
     while(m--){
         ll a,b;
         cin>>a>>b;
-        swap(in[v[a-1]],in[v[b-1]]);
-        flx(in)
-        ll c=1;
-        for(int i=1;i<n;i++){
-            if(in[i+1]<in[i]) c++;
-        }
+        if(v[a]+1<=n) s.insert({v[a],v[a]+1});
+        if(v[a]-1>=1) s.insert({v[a]-1,v[a]});
+        if(v[b]+1<=n) s.insert({v[b],v[b]+1});
+        if(v[b]-1>=1) s.insert({v[b]-1,v[b]});
+        for(auto [x,y]:s) c-=(in[y]<in[x]);
+        swap(v[a],v[b]);
+        in[v[a]]=a;
+        in[v[b]]=b;
+        for(auto [x,y]:s) c+=(in[y]<in[x]);
         co(c)
+        s.clear();
     }
 }
 
